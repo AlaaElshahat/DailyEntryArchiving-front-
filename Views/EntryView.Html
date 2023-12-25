@@ -1,0 +1,43 @@
+<div
+  class="col-md-12 col-lg-12 col-xl-12 card mb-10"
+  ng-controller="EntryController"
+>
+  <div class="card-header bg-transparent">
+    <i class="fas fa-list"></i> Entry Information
+  </div>
+
+  <form class="card-body card-body-bordered" name="EntryForm">
+    <div class="form-outline mb-2">
+      <label class="form-label" for="date"> Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        required
+        name="date"
+        ng-model="date"
+      />
+      <span
+        ng-show="EntryForm.date.$touched && EntryForm.date.$invalid"
+        style="color: red"
+        >The date is required.</span
+      >
+    </div>
+    <div class="form-outline mb-2">
+      <label class="form-label" for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        ng-model="description"
+        required
+      >
+      </textarea>
+      <span
+        ng-show="EntryForm.description.$touched && EntryForm.description.$invalid"
+        style="color: red"
+        >The description is required.</span
+      >
+    </div>
+  </form>
+</div>

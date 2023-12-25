@@ -1,0 +1,48 @@
+
+body{
+    background-color: whitesmoke;
+}
+table, td ,th{
+    border: 1px solid whitesmoke;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color:rgb(0, 153, 255);
+    font-style: normal;
+    color: white;
+}
+table{
+    width: 100%;
+    margin-bottom: 2%;
+    overflow-y:scroll;
+    height: 70%;
+
+     
+}
+tr:nth-child(even) {
+    background-color: white
+  }
+
+
+  tr:nth-child(odd) {
+    background-color:whitesmoke
+  }
+  input{
+    width: 100%;
+    border-radius: 5px;
+    border:2px  solid lightgray;
+  }
+  #debitsCell
+  {
+      border: 5px solid lightcoral;
+  }
+  #creditsCell
+  {
+    border: 5px solid lightgreen;
+  }
+

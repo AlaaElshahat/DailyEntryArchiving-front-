@@ -1,0 +1,156 @@
+<div
+  class="col-md-12 col-lg-12 col-xl-12 card mt-10"
+  ng-controller="DetailsController"
+  style="height: 100%"
+>
+  <div class="card-header bg-transparent">
+    <i class="fas fa-list"></i> Details
+  </div>
+  <div class="card-footer bg-transparent">
+    <div style="display: inline-block; text-align: center">
+      <label
+        for="DebitsAmount"
+        style="margin-bottom: 0%; color: rgb(229, 73, 73); font-weight: bold"
+        >Debits Amount</label
+      ><br />
+      <input
+        type="text"
+        readonly
+        id="DebitsAmount"
+        value="{{totalDebits}}"
+        style="
+          background-color: lightgray;
+          border: none;
+          border-radius: 3px;
+          margin: 5%;
+        "
+      />
+    </div>
+    <div style="display: inline-block; text-align: center">
+      <label
+        for="Difference"
+        style="margin-bottom: 0%; color: rgb(51, 107, 181); font-weight: bold"
+        font-weight:
+        bold
+        >Difference</label
+      ><br />
+      <input
+        type="text"
+        readonly
+        id="Difference"
+        style="
+          background-color: lightgray;
+          border: none;
+          border-radius: 3px;
+          margin: 5%;
+        "
+        value="{{totalDebits - totalCredits}}"
+      />
+    </div>
+    <div style="display: inline-block; margin-right: 45%; text-align: center">
+      <label
+        for="CreditsAmount"
+        style="margin-bottom: 0%; color: rgb(54, 230, 34); font-weight: bold"
+        >Credits Amount</label
+      ><br />
+      <input
+        type="text"
+        readonly
+        id="CreditsAmount"
+        style="
+          background-color: lightgray;
+          border: none;
+          border-radius: 3px;
+          margin: 5%;
+        "
+        value="{{totalCredits}}"
+      />
+    </div>
+    <button ng-click="addRow()" class="btn btn-primary">+AddRows</button>
+    <button
+      class="btn btn-success"
+      ng-controller="EntryController"
+      type="submit"
+      ng-click="submitForm()"
+    >
+      Save Data
+    </button>
+  </div>
+  <div style="overflow-x: auto">
+    <table class="card-body">
+      <thead>
+        <th>Debits</th>
+        <th>Credits</th>
+        <th>Account Name</th>
+        <th>Account Number</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rows">
+          <form class="form-control">
+            <td>
+              <input
+                type="number"
+                name="debits"
+                id="debitsCell"
+                ng-model="row.debits"
+                ng-disabled="row.credits"
+                ng-blur="calculateDebitsAmount($index)"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="Credits"
+                id="creditsCell"
+                ng-model="row.credits"
+                ng-disabled="row.debits"
+                ng-blur="calculateCreditssAmount($index)"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                ng-model="SearchedName"
+                value="{{selectedAccount.arabicName}}"
+              />
+              <select
+                ng-show="Searched"
+                style="width: 100%"
+                ng-model="selectedAccount"
+              >
+                <option
+                  ng-repeat="account in Accounts | filter:SearchedName"
+                  name="id"
+                  value="{{account.id}}"
+                >
+                  {{account.arabicName}}
+                </option>
+              </select>
+            </td>
+            <td>
+              <input type="text" value="{{Number}}" ng-model="SearchedNumber" />
+              <select
+                ng-show="SearchedNumber"
+                style="width: 100%"
+                ng-model="Number"
+              >
+                <option ng-repeat="account in Accounts | filter:SearchedNumber">
+                  {{account.number}}
+                </option>
+              </select>
+            </td>
+          </form>
+          <td>
+            <button
+              style="overflow-x: auto; border: none"
+              class="bg-transparent"
+            >
+              <i class="fas fa-solid fa-trash" style="color: red"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+.card-body-bordered {
+    border: 1px solid #dee2e6; 
+    border-radius: 0.25rem; 
+    padding: 5px;
+    margin: 1.5%;
+  }
